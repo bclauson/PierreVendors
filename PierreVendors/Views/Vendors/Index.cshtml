@@ -1,7 +1,13 @@
+    @{
+  Layout = "_Layout";
+}
+
 <html>
   <head>
     <meta charset="utf-8">
     <title>Your Vendors</title>
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   </head>
   <body>
@@ -9,15 +15,15 @@
 
     <h1>Vendors</h1>
 
-    @if (@Model.Count == 0)
+    @if (Model.Count == 0)
     {
-      <h3>No Current Vendors!</h3>
+      <p>No Current Vendors</p>
     } 
 
     <ul>
       @foreach (Vendors vendor in Model)
       {
-        <li>@vendor.Vendor </li>
+        <li><a href='/vendors/@vendor.Id'>@vendor.Vendor </li>
       }
     </ul>
 
