@@ -20,9 +20,15 @@ namespace PierreVendors.Tests
       Assert.AreEqual(typeof(Vendors), newVendors.GetType());
     }
 
+    [TestMethod]
+    public void VendorsName_GetNameOfVendor_Vendors()
+    {
+      
+      Vendors newVendor = new Vendors("Suzie");
+      Assert.AreEqual("Suzie", newVendor.Vendor);
 
+    }
 
   }
-
 
 }

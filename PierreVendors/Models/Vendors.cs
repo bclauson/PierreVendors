@@ -21,6 +21,11 @@ namespace PierreVendors.Models
       _instances.Clear();
     }
 
+    public static List<Vendors> GetAll()
+    {
+      return _instances;
+    }
+
 
   }
 
