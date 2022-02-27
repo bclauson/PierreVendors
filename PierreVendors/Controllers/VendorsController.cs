@@ -29,6 +29,32 @@ namespace PierreVendors.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/vendors/{vendorsId}")]
+    public ActionResult Show(int vendorsId)
+    {
+      Dictionary<string,object> model = new Dictionary<string, object>();
+      Vendors selectedVendors = Vendors.Find(vendorsId);
+      List<Order> vendorsOrders = selectedVendors.Orders;
+      model.Add("vendors", selectedVendors);
+      model.Add("orders", vendorsOrders);
+      return View(model);
+    }
+
+    [HttpPost("/vendors/{vendorsId}/orders")]
+    public ActionResult Create(int vendorsId, string orderTitle, string orderDescription, int price, string date)
+    {
+      Dictionary<string, object> model = new Dictionary<string,object>();
+      Vendors foundVendors = Vendors.Find(vendorsId);
+      Order newOrder = new Order(orderTitle, orderDescription, price, date);
+      foundVendors.AddOrder(newOrder);
+      List<Order> vendorsOrders = foundVendors.Orders;
+      model.Add("orders", vendorsOrders);
+      model.Add("vendors", foundVendors);
+      return View("Show", model);
+
+    }
+
+
 
   }
 }

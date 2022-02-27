@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vendors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+    @using PierreVendors.Models;
+
+    <h3>Here are all the Orders for this Vendor</h3>
+
+    <ul>
+    @foreach (Order order in @Model["orders"])
+    {
+      <li>Order: @order.Title </li>
+    }
+    </ul>
+
+    <p><a href='/vendors/@Model["vendors"].Id/order/new'>Add another order to this vendor</a></p>
+    <p><a href='/vendors'>Return to vendors list</a></p>
+  </body>
+</html>
